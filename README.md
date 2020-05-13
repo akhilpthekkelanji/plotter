@@ -49,8 +49,7 @@ The path to the file along with .xlsx extension is required by the program to pl
   						the program decides the points to be displayed on the axes.
 
   -t, --transpose       Take transpose of excel sheet
-
-  -i, --inside			Show legends inside plot, by default it is shown outside the plot
+  -i, --inside          Show legends inside plot, by default it is shown outside the plot
   
   -f FILE, --file FILE  Eath to input excel file
 ```
