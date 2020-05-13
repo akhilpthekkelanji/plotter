@@ -1,5 +1,5 @@
 # plotxl
-plotxl is a python program that helps you plot linear line graphs from the values stored in an excel file.
+plotxl is a python program that helps you plot line graphs from the values stored in an excel file.
 It can be used to create plots for the same inputs under various conditions in a single graph.
 
 ## Prerequisites
