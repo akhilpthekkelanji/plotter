@@ -49,14 +49,13 @@ def plot_graph(xval, yval, lines):
 	if args["xval"]:
 		plt.xticks(xval)
 
-	# naming the x axis 
-	plt.xlabel(x_label + x_unit) 
-	# naming the y axis 
-	plt.ylabel(y_label + y_unit) 
-	# giving a title to my graph 
-	plt.title(title) 
 
-	# show a legend on the plot 
+	plt.xlabel(x_label + x_unit) 
+	
+	plt.ylabel(y_label + y_unit) 
+	
+	plt.title(title) 
+ 
 	if lines != ['']:
 		if args["inside"]:
 			plt.legend()
@@ -65,7 +64,7 @@ def plot_graph(xval, yval, lines):
 	if args["grid"]:
 		plt.grid()  
 	plt.tight_layout()
-	# function to show the plot 
+ 
 	plt.show() 
 
 
