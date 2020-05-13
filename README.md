@@ -48,9 +48,9 @@ The path to the file along with .xlsx extension is required by the program to pl
   -x, --xval            Every x value in the input file will be shown on x-axis. By default, 
   						the program decides the points to be displayed on the axes.
 
-  -t, --transpose       take transpose of excel sheet
+  -t, --transpose       Take transpose of excel sheet
 
-  -i, --inside			show legends inside plot, by default it is shown outside the plot
+  -i, --inside			Show legends inside plot, by default it is shown outside the plot
   
   -f FILE, --file FILE  Eath to input excel file
 ```
