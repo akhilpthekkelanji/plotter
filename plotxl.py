@@ -5,7 +5,7 @@ import argparse
 
 def get_Val (sh, t_flag):
 
-	# x axis values
+	# x-axis values
 	x_val = [] 
 
 	# Labels of conditions
