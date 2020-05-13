@@ -3,6 +3,72 @@ import xlrd
 import argparse	
 
 
+def get_Val (sh, t_flag):
+
+	# x axis values
+	x_val = [] 
+
+	# Labels of conditions
+	lines = []
+
+	n_lines = sh.ncols
+	n_xval = sh.nrows
+	
+	for i in range(1,n_xval):
+	    x_val.append(sh.cell_value(i,0))
+
+
+	for i in range(1,n_lines):
+			lines.append(sh.cell_value(0, i))
+		
+	if t_flag:
+		(x_val, lines, n_lines, n_xval) = (lines, x_val, n_xval, n_lines)
+			
+
+
+	y_val = []
+	for k in range(1, n_lines):
+	    y_val.append([])
+	
+	index = 0    
+	for i in range(1, n_lines):
+	    for j in range(1, n_xval):
+	    	if t_flag:
+	        	y_val[index].append(sh.cell_value(i, j))
+	    	else:
+	    		y_val[index].append(sh.cell_value(j, i))
+	    index = index + 1
+	return x_val, y_val, lines
+
+
+def plot_graph(xval, yval, lines):
+
+	for i in range(0, len(yval)):
+		plt.plot(xval, yval[i], label = str(lines[i]), marker= "o")
+
+	if args["xval"]:
+		plt.xticks(xval)
+
+	# naming the x axis 
+	plt.xlabel(x_label + x_unit) 
+	# naming the y axis 
+	plt.ylabel(y_label + y_unit) 
+	# giving a title to my graph 
+	plt.title(title) 
+
+	# show a legend on the plot 
+	if lines != ['']:
+		if args["inside"]:
+			plt.legend()
+		else:
+			plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+	if args["grid"]:
+		plt.grid()  
+	plt.tight_layout()
+	# function to show the plot 
+	plt.show() 
+
+
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-g", "--grid", action = "store_true",
@@ -10,8 +76,15 @@ ap.add_argument("-g", "--grid", action = "store_true",
 
 ap.add_argument("-d", "--detail", action = "store_true",
 	help = "enter details like title and units")
+
 ap.add_argument("-x", "--xval", action = "store_true", 
 	help = "every x value in the input file will be shown on x-axis.")
+
+ap.add_argument("-t", "--transpose", action = "store_true",
+	help = "take transpose of excel sheet")
+
+ap.add_argument("-i", "--inside", action = "store_true",
+	help = "Show legends inside plot boundary")
 
 ap.add_argument("-f", "--file", required = True,
 	help = "path to input excel file")
@@ -56,48 +129,6 @@ if args['detail']:
 wb = xlrd.open_workbook(args["file"])
 sheet = wb.sheet_by_index(0)
 
-# x axis values
-xval = [] 
+xval, yval, lines = get_Val(sheet, args["transpose"])
 
-# constant parameter
-lines = []
-
-for i in range(1,sheet.nrows):
-    xval.append(sheet.cell_value(i,0))
-
-
-for i in range(1,sheet.ncols):
-		lines.append(sheet.cell_value(0, i))
-
-
-yval = []
-for k in range(1, sheet.ncols):
-    yval.append([])
-
-index = 0    
-for i in range(1,sheet.ncols):
-    for j in range(1,sheet.nrows):
-        yval[index].append(sheet.cell_value(j,i))
-    index = index + 1
-
-
-for i in range(0, len(yval)):
-	plt.plot(xval, yval[i], label = str(lines[i]), marker= "o")
-
-if args["xval"]:
-	plt.xticks(xval)
-
-# naming the x axis 
-plt.xlabel(x_label + x_unit) 
-# naming the y axis 
-plt.ylabel(y_label + y_unit) 
-# giving a title to my graph 
-plt.title(title) 
-
-# show a legend on the plot 
-if lines != ['']:
-	plt.legend() 
-if args["grid"]:
-	plt.grid()  
-# function to show the plot 
-plt.show() 
+plot_graph(xval, yval, lines)

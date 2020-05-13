@@ -40,11 +40,18 @@ The path to the file along with .xlsx extension is required by the program to pl
  ### Command line arguments
  ```
   -h, --help            show this help message and exit
+
   -g, --grid            Enable grid
+
   -d, --detail          Enter details like title and units
-  -x, --xval            Every x value in the input file will be shown on
-                        x-axis. By default, the program decides the points 
-                        to be displayed on the axes.
+
+  -x, --xval            Every x value in the input file will be shown on x-axis. By default, 
+  						the program decides the points to be displayed on the axes.
+
+  -t, --transpose       take transpose of excel sheet
+
+  -i, --inside			show legends inside plot, by default it is shown outside the plot
+  
   -f FILE, --file FILE  Eath to input excel file
 ```
 
