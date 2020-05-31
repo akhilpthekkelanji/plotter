@@ -15,7 +15,7 @@ def get_Val (sh, t_flag):
 	n_xval = sh.nrows
 	
 	for i in range(1,n_xval):
-	    x_val.append(sh.cell_value(i,0))
+		x_val.append(sh.cell_value(i,0))
 
 
 	for i in range(1,n_lines):
@@ -28,23 +28,23 @@ def get_Val (sh, t_flag):
 
 	y_val = []
 	for k in range(1, n_lines):
-	    y_val.append([])
+		y_val.append([])
 	
 	index = 0    
 	for i in range(1, n_lines):
-	    for j in range(1, n_xval):
-	    	if t_flag:
-	        	y_val[index].append(sh.cell_value(i, j))
-	    	else:
-	    		y_val[index].append(sh.cell_value(j, i))
-	    index = index + 1
+		for j in range(1, n_xval):
+			if t_flag:
+				y_val[index].append(sh.cell_value(i, j))
+			else:
+				y_val[index].append(sh.cell_value(j, i))
+		index = index + 1
 	return x_val, y_val, lines
 
 
 def plot_graph(xval, yval, lines):
 
 	for i in range(0, len(yval)):
-		plt.plot(xval, yval[i], label = str(lines[i]), marker= "o")
+		plt.plot(xval, yval[i], label = (str(lines[i]) + " " + c_unit), marker= "o")
 
 	if args["xval"]:
 		plt.xticks(xval)
@@ -122,6 +122,10 @@ if args['detail']:
 	y_unit = input("Unit of Y axis: ")
 	if y_unit != '':
 		y_unit = "(" + y_unit + ")"
+	print("<<<===============================================>>>")
+	print("")
+	
+	c_unit = input("Unit of condition: ")
 	print("<<<===============================================>>>")
 	print("")
 	
