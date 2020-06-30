@@ -3,8 +3,8 @@ plotxl is a python program that helps you plot line graphs from the values store
 It can be used to create plots for the same inputs under various conditions in a single graph.
 
 ## Prerequisites
-Make sure you have ```matplotlib```, ```xlrd``` and ```argparse``` python libraries installed.
-
+Make sure you have ```matplotlib```, ```xlrd``` and ```argparse``` python libraries and ```PyQt5``` plugin installed.
+	``` pip3 install matplotlib xlrd argparse PyQt5 ```
 ## Usage
 The program takes values stored in an excel in a specific format and generates line graphs.
 

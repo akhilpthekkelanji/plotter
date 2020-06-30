@@ -92,6 +92,7 @@ args = vars(ap.parse_args())
 
 x_unit = ""
 y_unit = ""
+c_unit = ""
 title = "Plot"
 
 x_label = "X-axis"
